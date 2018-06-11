@@ -60,16 +60,14 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    if len(a) % 2 == 0:
-        a_front, a_back = a[:int((len(a)/2))], a[-int((len(a)/2)):]
-    else:
-        a_front, a_back = a[:int((len(a)/2))+1], a[-int((len(a)/2)):]
-
-    if len(b) % 2 == 0:
-        b_front, b_back = b[:int((len(b)/2))], b[-int((len(b)/2)):]
-    else:
-        b_front, b_back = b[:int((len(b)/2))+1], b[-int((len(b)/2)):] 
-
+    def split_string(s):
+        if len(s) % 2 == 0:
+            s_front, s_back = s[:int((len(s)/2))], s[-int((len(s)/2)):]
+        else:
+            s_front, s_back = s[:int((len(s)/2))+1], s[-int((len(s)/2)):]
+        return s_front, s_back
+    a_front, a_back = split_string(a)
+    b_front, b_back = split_string(b)
     return a_front+b_front+a_back+b_back
 
 
